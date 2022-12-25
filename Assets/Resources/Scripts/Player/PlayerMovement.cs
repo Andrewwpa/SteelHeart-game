@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     private bool _isSprinting = false;
     private bool _isSprintKeyPressed;
 
-
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -35,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _horizontalAxis = Input.GetAxis("Horizontal");
         _isSprintKeyPressed = Input.GetKey(sprintKey);
+
+        MoveOnStair();
     }
 
     private void FixedUpdate()
@@ -70,4 +71,31 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics.Raycast(transform.position + Vector3.up, Vector3.down, floorCheckRayLength);
     }
+
+    public bool checkedStair = false;
+    public Transform StairCheck;
+
+    public void CheckingStair()
+    {
+        checkedStair = !checkedStair;
+    }
+
+    private void MoveOnStair()
+    {
+        if (checkedStair)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+            transform.position = new Vector3(transform.position.x, transform.position.y + Input.GetAxisRaw("Vertical"), transform.position.z);
+
+        }
+        else
+        {
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
+        }
+    }
+
+
 }
