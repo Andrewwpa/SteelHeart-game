@@ -26,7 +26,7 @@ namespace stateMachinePlayer
         {
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                if (Mathf.Abs(Input.GetAxis("Vertical")) > 0.0f || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.0f)
+                //if (Mathf.Abs(Input.GetAxis("Vertical")) > 0.0f || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.0f)
                 {
                     currentStateMachine.ChangeState(new RunState(currentStateMachine, currentPlayer, 200, 10, 2));
                 }

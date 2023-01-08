@@ -11,8 +11,17 @@ namespace stateMachinePlayer
         public RunState(StateMachine stateMachine, Player player, float speed, float rotationSpeed, float limitSpeed) : base(stateMachine, player, speed, rotationSpeed, limitSpeed)
         {
 
-        } 
+        }
 
+        public override void Enter()
+        {
+            Debug.Log("иду");
+        }
+
+        public override void Exit()
+        {
+            Debug.Log("не иду");
+        }
 
         public override void Update()
         {            
@@ -27,6 +36,10 @@ namespace stateMachinePlayer
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 currentStateMachine.ChangeState(new JumpState(currentStateMachine, currentPlayer));
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                stateMachine.ChangeState(new StairsState(stateMachine, player, 1, 0, 1));
             }
         }
                 

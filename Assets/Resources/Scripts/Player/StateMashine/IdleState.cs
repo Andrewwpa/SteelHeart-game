@@ -30,6 +30,12 @@ namespace stateMachinePlayer
             {
                 stateMachine.ChangeState(new JumpState(stateMachine, player));
             }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                stateMachine.ChangeState(new StairsState(stateMachine, player, 1, 0, 1));
+            }
+
+
         }
     }
 }

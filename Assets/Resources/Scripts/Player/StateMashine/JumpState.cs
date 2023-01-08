@@ -17,6 +17,7 @@ namespace stateMachinePlayer
         {
             if (player.OnGround)
             {
+                Debug.Log("прыжок");
                 player.Rigidbody.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse);
                 stateMachine.ChangeState(new IdleState(stateMachine, player));
             }
