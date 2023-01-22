@@ -37,7 +37,7 @@ namespace stateMachinePlayer
             {
                 currentStateMachine.ChangeState(new JumpState(currentStateMachine, currentPlayer));
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+            else if (Input.GetKeyDown(KeyCode.E) && Player.onStairs)
             {
                 stateMachine.ChangeState(new StairsState(stateMachine, player, 1, 0, 1));
             }

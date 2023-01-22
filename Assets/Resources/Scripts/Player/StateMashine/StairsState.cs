@@ -29,6 +29,10 @@ namespace stateMachinePlayer
             {
                     currentStateMachine.ChangeState(new RunState(currentStateMachine, currentPlayer, 200, 10, 2));
             }
+            else if (!Player.onStairs)
+            {
+                stateMachine.ChangeState(new RunState(stateMachine, player, 200, 10, 2));
+            }
 
         }
 

@@ -7,9 +7,9 @@ namespace stateMachinePlayer
 
     public class IdleState : State
     {
+
         public IdleState(StateMachine stateMachine, Player player) : base(stateMachine, player)
         {
-
         }              
                 
         public override void Update()
@@ -30,9 +30,16 @@ namespace stateMachinePlayer
             {
                 stateMachine.ChangeState(new JumpState(stateMachine, player));
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+            else if (Input.GetKeyDown(KeyCode.E) && Player.onStairs)
             {
-                stateMachine.ChangeState(new StairsState(stateMachine, player, 1, 0, 1));
+                if (Player.onStairs)
+                {
+                    stateMachine.ChangeState(new StairsState(stateMachine, player, 1, 0, 1));
+                }
+                else
+                {
+                    stateMachine.ChangeState(new IdleState(stateMachine, player));
+                }
             }
 
 
